@@ -18,4 +18,19 @@ public class Po extends Ennemi{
     public void Presentation(){
         System.out.println("Présentation assomante !");
     }
+
+    @Override
+    public void Attaquer(Personnage target) {
+        int degat = 0;
+        if (target.isDefense()) {
+            target.setPointDeVie(target.getPointDeVie() - (this.getForce() / 2));
+            degat = (this.getForce() / 2);
+        } else {
+            target.setPointDeVie(target.getPointDeVie() - this.getForce());
+            degat = this.getForce();
+        }
+        target.setDefense(false);
+        System.out.println("Le Po vous dis qu'il faut juste chercher sur internet (gros noob). " +
+                "Vous perdez " + degat + " PV.");
+    }
 }

@@ -18,4 +18,19 @@ public class Bug extends Ennemi{
     public void ErreurDeConnection(){
         System.out.println("La connection à crash");
     }
+
+    @Override
+    public void Attaquer(Personnage target) {
+        int degat = 0;
+        if (target.isDefense()) {
+            target.setPointDeVie(target.getPointDeVie() - (this.getForce() / 2));
+            degat = (this.getForce() / 2);
+        } else {
+            target.setPointDeVie(target.getPointDeVie() - this.getForce());
+            degat = this.getForce();
+        }
+        target.setDefense(false);
+        System.out.println("Chat GPT ne vous a pas bien aidé et le bug persiste. Vous perdez " +
+                degat + " PV.");
+    }
 }
