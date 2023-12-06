@@ -9,9 +9,10 @@ public class Main {
         Ennemi kevin = new Ennemi("Kévin", 30, 5, false, new ArrayList<>());
         Joueur killian = new Joueur("Killian", 30, 5, false, new Hashtable());
         killian.Attaquer(kevin);
-        Objet popo = new Objet("Potion Heal", 2);
+        Objet popo = new Objet("Potion","Heal",30);
 
         System.out.println(popo.getNom());
-        System.out.println(popo.getCapaciteCheck());
+        System.out.println(popo.getCapacite());
+        System.out.println(popo.getValeur());
     }
 }
