@@ -4,6 +4,15 @@ public class Personnage {
     private String nom;
     private int pointDeVie;
     private int force;
+    private boolean defense;
+
+    public boolean isDefense() {
+        return defense;
+    }
+
+    public void setDefense(boolean defense) {
+        this.defense = defense;
+    }
 
     public String getNom() {
         return nom;
@@ -29,14 +38,15 @@ public class Personnage {
         this.force = force;
     }
 
-    public Personnage(String nom, int pointDeVie, int force) {
+    public Personnage(String nom, int pointDeVie, int force, boolean defense) {
         this.nom = nom;
         this.pointDeVie = pointDeVie;
         this.force = force;
+        this.defense = defense;
     }
 
     /* Methode qui à pour action d'attaquer */
-    public void Attaquer(){
+    public void Attaquer(Ennemi target){
         System.out.println("Le personnage attaque");
     }
 

@@ -3,8 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Po extends Ennemi{
-    public Po(String nom, int pointDeVie, int force, ArrayList<String> loot) {
-        super(nom, pointDeVie, force, loot);
+    public Po(String nom, int pointDeVie, int force, boolean defense, ArrayList<String> loot) {
+        super(nom, pointDeVie, force, defense, loot);
     }
 
     public void Slide(){

@@ -3,8 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Bug extends Ennemi{
-    public Bug(String nom, int pointDeVie, int force, ArrayList<String> loot) {
-        super(nom, pointDeVie, force, loot);
+    public Bug(String nom, int pointDeVie, int force, boolean defense, ArrayList<String> loot) {
+        super(nom, pointDeVie, force, defense, loot);
     }
 
     public void MergeConflict(){

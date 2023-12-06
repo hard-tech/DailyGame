@@ -3,8 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Sncf extends Ennemi{
-    public Sncf(String nom, int pointDeVie, int force, ArrayList<String> loot) {
-        super(nom, pointDeVie, force, loot);
+    public Sncf(String nom, int pointDeVie, int force, boolean defense, ArrayList<String> loot) {
+        super(nom, pointDeVie, force, defense, loot);
     }
 
     public void MalaiseVoyageur(){
