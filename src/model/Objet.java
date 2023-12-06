@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Objet {
+public  abstract class Objet implements Interactuable {
+
     private String nom;
     private String capacite = "";
     private int valeur = 0;

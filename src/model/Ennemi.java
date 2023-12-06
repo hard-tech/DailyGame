@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ennemi extends Personnage{
+public class Ennemi extends Personnage implements Interactuable {
     /* Tableau contennant la liste des élément looter par les ennemies */
     private ArrayList<String> loot = new ArrayList<String>();
 
@@ -29,4 +29,6 @@ public class Ennemi extends Personnage{
     public void setLoot(ArrayList<String> loot) {
         this.loot = loot;
     }
+
+
 }
