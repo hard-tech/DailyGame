@@ -1,6 +1,6 @@
 package model;
 
-public class Objet {
+public  abstract class Objet implements Interactuable {
     private String nom;
     private String capacite;
 
@@ -23,5 +23,10 @@ public class Objet {
     public Objet(String nom, String capacite) {
         this.nom = nom;
         this.capacite = capacite;
+    }
+
+    @Override
+    public void interagir() {
+
     }
 }

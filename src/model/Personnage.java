@@ -1,6 +1,6 @@
 package model;
 
-public class Personnage {
+public class Personnage implements Interactuable {
     private String nom;
     private int pointDeVie;
     private int force;
@@ -43,5 +43,10 @@ public class Personnage {
     /* Methode qui à pour action de se défendre */
     public void Defendre(){
         System.out.println("Le personnage se défend");
+    }
+
+    @Override
+    public void interagir() {
+
     }
 }
