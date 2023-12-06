@@ -34,24 +34,24 @@ public class Joueur extends  Personnage{
 
     /* Utiliser un objet */
     public void Utiliser(Objet objet){
-
+        if (objet.getCapacite().toLowerCase().contains("heal")){
+            this.setPointDeVie(this.getPointDeVie() + objet.getValeur());
+        }
     }
     /* Attaquer */
+
     @Override
-    public void Attaquer(Ennemi target){
-        if (target.isDefense()){
-            target.setPointDeVie(target.getPointDeVie() - (this.getForce() / 2));
-        }
-        else {
-            target.setPointDeVie(target.getPointDeVie() - this.getForce());
-        }
-        target.setDefense(false);
+    public void Attaquer(Ennemi target) {
+        super.Attaquer(target);
     }
+
     /* Defendre */
+
     @Override
-    public void Defendre(){
-        this.setDefense(true);
+    public void Defendre() {
+        super.Defendre();
     }
+
     // équiper
     public void Equiper(Arme arme){
         this.setForce(this.getForce() + arme.getForceBoost());

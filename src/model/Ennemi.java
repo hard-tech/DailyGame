@@ -12,6 +12,16 @@ public class Ennemi extends Personnage{
         this.loot = loot;
     }
 
+    @Override
+    public void Attaquer(Ennemi target) {
+        super.Attaquer(target);
+    }
+
+    @Override
+    public void Defendre() {
+        super.Defendre();
+    }
+
     public ArrayList<String> getLoot() {
         return loot;
     }

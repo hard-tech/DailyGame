@@ -47,11 +47,17 @@ public class Personnage {
 
     /* Methode qui à pour action d'attaquer */
     public void Attaquer(Ennemi target){
-        System.out.println("Le personnage attaque");
+        if (target.isDefense()){
+            target.setPointDeVie(target.getPointDeVie() - (this.getForce() / 2));
+        }
+        else {
+            target.setPointDeVie(target.getPointDeVie() - this.getForce());
+        }
+        target.setDefense(false);
     }
 
     /* Methode qui à pour action de se défendre */
     public void Defendre(){
-        System.out.println("Le personnage se défend");
+        this.setDefense(true);
     }
 }
