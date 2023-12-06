@@ -3,6 +3,8 @@ import model.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Projet Starting ...");
+       Personnage test = new Personnage("test",100,10);
+       test.interagir(test);
+
     }
 }

@@ -1,5 +1,5 @@
 package model;
 
 public interface Interactuable {
-    public void interagir();
+    void interagir(Object cible);
 }

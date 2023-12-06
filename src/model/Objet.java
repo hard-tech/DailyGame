@@ -25,8 +25,5 @@ public  abstract class Objet implements Interactuable {
         this.capacite = capacite;
     }
 
-    @Override
-    public void interagir() {
 
-    }
 }
