@@ -108,5 +108,36 @@ public class Joueur extends  Personnage implements Interactuable{
         System.out.println("Le personnage parle à un PNJ.");
         // Implémentez la logique pour parler à un PNJ ici
     }
+
+    public ArrayList<Personnage> Battle(){
+         ArrayList<Personnage> list_ennemi = new ArrayList<Personnage>();
+
+        Sncf train1 = new Sncf("RER B",100,5,false,new ArrayList<>());
+        Sncf train2 = new Sncf("RER A",110,4,false,new ArrayList<>());
+        Sncf train3 = new Sncf("RER C",95,7,false,new ArrayList<>());
+
+        Bug bug1 = new Bug("Erreur 404",50,2,false,new ArrayList<>());
+        Bug bug2 = new Bug("Erreur 405",45,3,false,new ArrayList<>());
+        Bug bug3 = new Bug("403 Forbidden",60,4,false,new ArrayList<>());
+
+        Po po1 = new Po("François",200,15,false,new ArrayList<>());
+        Po po2 = new Po("Benoit",50,25,false,new ArrayList<>());
+        Po po3 = new Po("Joachim",150,18,false,new ArrayList<>());
+
+        list_ennemi.add(train1);
+        list_ennemi.add(train2);
+        list_ennemi.add(train3);
+
+        list_ennemi.add(bug1);
+        list_ennemi.add(bug2);
+        list_ennemi.add(bug3);
+
+        list_ennemi.add(po1);
+        list_ennemi.add(po2);
+        list_ennemi.add(po3);
+
+        return list_ennemi;
+
+    }
 }
 
