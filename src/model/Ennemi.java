@@ -31,4 +31,8 @@ public class Ennemi extends Personnage implements Interactuable {
     }
 
 
+    @Override
+    public void interagir(Object cible) {
+
+    }
 }

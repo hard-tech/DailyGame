@@ -13,7 +13,7 @@ public class Main {
         // killian.Utiliser(popo);
         System.out.println(killian.getPointDeVie());
 
-        Personnage test = new Personnage("test",100,10,false);
+        Joueur test = new Joueur("test",100,10,false,new Hashtable());
         test.interagir(test);
     }
 }
