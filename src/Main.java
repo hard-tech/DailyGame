@@ -89,8 +89,6 @@ public class Main {
                 System.out.println("Choix de classe non valide");
         }
 
-
-
         /*Premier choix du joueur et début du jeu*/
         System.out.println("Vous allez a présent pouvoir commencer votre journée de codeur");
         System.out.println("Dans ce jeu vous aller devoir faire des choix qui influencerons votre histoire");
@@ -99,7 +97,6 @@ public class Main {
         int day = 1;
         while(day <= 5){
             System.out.println("Jour actuel : " + day);
-
 
             /* Début du cycle d'un jour de jeu */
 
@@ -132,7 +129,6 @@ public class Main {
                             /* Le joueur est plus performent durant la journé */
                             System.out.println("Comme vous avez fait votre daily, vous êtes mieux préparer à affronter vos problèmes.");
 
-
                             /* Un combat se lance contre un Bug de niveau Easy */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug1) */
@@ -140,7 +136,6 @@ public class Main {
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
-
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -182,8 +177,6 @@ public class Main {
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
-
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -196,13 +189,7 @@ public class Main {
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
-
-
                                     }
-
-
-
-
                                 }
                                 else {
 
@@ -234,8 +221,6 @@ public class Main {
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
-
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -252,17 +237,11 @@ public class Main {
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
-
-
                                     }
-
-
-
                                 }
-
-
                             }
                             else {
+
                                 /* Vous arrivez en retard et le Po s'énerve contre vous */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
@@ -310,10 +289,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }
-
-
 
                             }
 
@@ -325,7 +301,6 @@ public class Main {
                             /* Le joueur est moins performent durant la journé */
                             System.out.println("Comme vous n'avez pas fait votre daily, vous êtes mal préparer à affronter vos problèmes.");
 
-
                             /* Un combat se lance contre un Bug de niveau medium */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug2) */
@@ -333,7 +308,6 @@ public class Main {
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
-
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -376,7 +350,6 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
 
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -389,13 +362,7 @@ public class Main {
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
-
-
                                     }
-
-
-
-
                                 }
                                 else {
 
@@ -428,7 +395,6 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -445,15 +411,8 @@ public class Main {
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
-
-
                                     }
-
-
-
                                 }
-
-
                             }
                             else {
                                 /* Vous arrivez en retard et le Po s'énerve contre vous */
@@ -485,7 +444,6 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }else {
 
                                     /* na pas bu de café */
@@ -503,11 +461,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }
-
-
-
                             }
                         }
                     }else{
@@ -525,7 +479,6 @@ public class Main {
                             /* Le joueur est plus performent durant la journé */
                             System.out.println("Comme vous avez fait votre daily, vous êtes mieux préparer à affronter vos problèmes.");
 
-
                             /* Un combat se lance contre un Bug de niveau Easy */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug1) */
@@ -533,7 +486,6 @@ public class Main {
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
-
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -576,7 +528,6 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
 
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -590,12 +541,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
 
-
                                     }
-
-
-
-
                                 }
                                 else {
 
@@ -628,7 +574,6 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -646,14 +591,8 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                     }
-
-
-
                                 }
-
-
                             }
                             else {
                                 /* Vous arrivez en retard et le Po s'énerve contre vous */
@@ -685,7 +624,6 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }else {
 
                                     /* na pas bu de café */
@@ -703,11 +641,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }
-
-
-
                             }
 
                             /*  */
@@ -718,7 +652,6 @@ public class Main {
                             /* Le joueur est moins performent durant la journé */
                             System.out.println("Comme vous n'avez pas fait votre daily, vous êtes mal préparer à affronter vos problèmes.");
 
-
                             /* Un combat se lance contre un Bug de niveau medium */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug2) */
@@ -726,7 +659,6 @@ public class Main {
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
-
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -769,7 +701,6 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
 
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -783,12 +714,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
 
-
                                     }
-
-
-
-
                                 }
                                 else {
 
@@ -821,7 +747,6 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                     }else {
 
                                         /* na pas bu de café */
@@ -839,14 +764,8 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                     }
-
-
-
                                 }
-
-
                             }
                             else {
                                 /* Vous arrivez en retard et le Po s'énerve contre vous */
@@ -878,7 +797,6 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }else {
 
                                     /* na pas bu de café */
@@ -896,11 +814,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
 
-
                                 }
-
-
-
                             }
                         }
                     }
