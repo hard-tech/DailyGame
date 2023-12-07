@@ -13,6 +13,9 @@ public class Ennemi extends Personnage implements Interactuable {
         super(nom, pointDeVie, force, defense);
         this.loot = loot;
     }
+    public void Raciste(Joueur target){
+        System.out.println("");
+    }
 
     @Override
     public void Attaquer(Personnage target) {

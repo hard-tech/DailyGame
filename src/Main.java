@@ -6,7 +6,101 @@ import java.util.Scanner;
 // import control.*;
 
 public class Main {
+    Arme MacBook = new Arme("MacBook", 3);
+    Arme MacBookPro = new Arme("MacBook Pro", 5);
+    boolean combat = true;
+    Sncf train1 = new Sncf("RER B", 20, 3, false, new Hashtable<>());
+    Sncf train2 = new Sncf("RER A", 20, 3, false, new Hashtable<>());
+    Sncf train3 = new Sncf("RER C", 25, 3, false, new Hashtable<>());
+
+    Bug bug1 = new Bug("Erreur 404", 10, 3, false, new Hashtable<>());
+    Bug bug2 = new Bug("Erreur 405", 20, 5, false, new Hashtable<>());
+    Bug bug3 = new Bug("403 Forbidden", 25, 6, false, new Hashtable<>());
+
+    Po po1 = new Po("François", 50, 10, false, new Hashtable<>());
+    Po po2 = new Po("Benoit", 60, 12, false, new Hashtable<>());
+    Po po3 = new Po("Joachim", 1000, 1, false, new Hashtable<>());
+
+    Etudiant kevin = new Etudiant("Kévin", 35, 1, false, new Hashtable<>());
+
+    // Initialisation des loots
+    {
+        train1.setLoot("exp", 15);
+        train1.setLoot("J'ai besoin d'une pause", 1);
+
+        train2.setLoot("exp", 15);
+        train2.setLoot("J'ai besoin d'une pause", 1);
+
+        train3.setLoot("exp", 15);
+        train3.setLoot("J'ai besoin d'une pause", 1);
+
+        bug1.setLoot("exp", 20);
+        bug1.setLoot("pins", 15);
+        bug1.setLoot("J'ai besoin d'une pause", 1);
+
+        bug2.setLoot("exp", 30);
+        bug2.setLoot("pins", 25);
+        bug2.setLoot("J'ai besoin d'une pause", 1);
+
+        bug3.setLoot("exp", 40);
+        bug3.setLoot("pins", 35);
+
+        po1.setLoot("exp", 65);
+        po1.setLoot("pins", 80);
+
+        po2.setLoot("exp", 1000);
+        po2.setLoot("pins", 1000);
+
+        po3.setLoot("exp", 1);
+        po3.setLoot("pins", 1);
+
+        kevin.setLoot("exp", 65);
+        kevin.setLoot("pins", 80);
+        kevin.setLoot("J'ai besoin d'une pause", 3);
+    }
     Potion pause = new Potion("J'ai besoin d'une pause", "heal", 15);
+    Potion noir = new Potion("Je suis noir", "buff", 2);
+
+    public void Shop(Joueur joueur){
+        boolean shop = true;
+        while (shop){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Un shop est apparue (C'est de la magiiiie)");
+            System.out.println("1. MacBook : 40 pins");
+            System.out.println("2. MacBook Pro : 60 pins");
+            System.out.println("3. J'ai besoin d'une pause : 15 pins");
+            System.out.println("4. Quitter le shop");
+            System.out.println("");
+            System.out.println("Vous avez " + joueur.getPins() + " pins.");
+            String choix = scanner.next();
+
+            switch (choix){
+                case "1":
+                    if (joueur.getPins() >= 40){
+                        joueur.setPins(joueur.getPins() - 40);
+                        joueur.Equiper(MacBook);
+                    }
+                    else{
+                        System.out.println("Pas asser de pins.");
+                    }
+                case "2":
+                    if (joueur.getPins() >= 60){
+                        joueur.setPins(joueur.getPins() - 60);
+                        joueur.Equiper(MacBookPro);
+                    }
+                    else{
+                        System.out.println("Pas asser de pins.");
+                    }
+                case "3":
+                    int quantiteActuelle = joueur.getInventaire().get("J'ai besoin d'une pause");
+                    joueur.getInventaire().put("J'ai besoin d'une pause", quantiteActuelle + 1);
+                case "4":
+                    break;
+                default:
+                    System.out.println("Choix invalide");
+            }
+        }
+    }
 
     public boolean Fight(Joueur joueur, Ennemi ennemi){
         boolean ennemiVie = true;
@@ -27,7 +121,26 @@ public class Main {
                         choixFait = false;
                         break;
                     case "3":
-                        if (joueur.getInventaire().get("J'ai besoin d'une pause") > 0){
+                        if (joueur.getInventaire().get("J'ai besoin d'une pause") > 0 &&
+                                joueur.getInventaire().get("Je suis noir") > 0){
+                            Scanner scanner = new Scanner(System.in);
+                            System.out.println("Que voulez-vous utiliser ?");
+                            System.out.println("1. J'ai besoin d'une pause");
+                            System.out.println("2. Je suis noir");
+                            String choixObjet = scanner.next();
+                            if (choixObjet == "1"){
+                                joueur.UtiliserObjet(joueur, pause);
+                                choixFait = false;
+                                }
+                            else if (choixObjet == "2"){
+                                joueur.UtiliserObjet(joueur, noir);
+                                choixFait = false;
+                            }
+                            else {
+                                System.out.println("C'est 1 ou 2 pas autre chose (débile).");
+                            }
+                        }
+                        else if (joueur.getInventaire().get("J'ai besoin d'une pause") > 0){
                             joueur.UtiliserObjet(joueur, pause);
                             choixFait = false;
                         }
@@ -52,7 +165,6 @@ public class Main {
                 if (joueur.getExp() >= 35){
                     joueur.levelUp();
                 }
-                System.out.println(joueur.getInventaire());
                 ennemiVie = false;
                 fight = false;
                 victoire = true;
@@ -67,30 +179,23 @@ public class Main {
 
             if (ennemiVie) {
                 System.out.println("");
-                System.out.println("Attaque ennemi");
-                ennemi.Attaquer(joueur);
-                choixFait = true;
+                if (ennemi.getNom() == "Kévin" && ennemi.getPointDeVie() <= 11){
+                    ennemi.Raciste(joueur);
+                    choixFait = true;
+                }
+                else{
+                    System.out.println("Attaque ennemi");
+                    ennemi.Attaquer(joueur);
+                    choixFait = true;
+                }
                 System.out.println("");
-                if (joueur.getPointDeVie() <= 0) {
+                if (joueur.getPointDeVie() <= 0 || ennemi.getPointDeVie() <= 0) {
                     fight = false;
                 }
             }
         }
         return victoire;
     }
-
-    Sncf train1 = new Sncf("RER B",100,5,false,new ArrayList<>());
-    Sncf train2 = new Sncf("RER A",110,4,false,new ArrayList<>());
-    Sncf train3 = new Sncf("RER C",95,7,false,new ArrayList<>());
-
-    Bug bug1 = new Bug("Erreur 404",50,2,false,new ArrayList<>());
-    Bug bug2 = new Bug("Erreur 405",45,3,false,new ArrayList<>());
-    Bug bug3 = new Bug("403 Forbidden",60,4,false,new ArrayList<>());
-
-    Po po1 = new Po("François",200,15,false,new ArrayList<>());
-    Po po2 = new Po("Benoit",50,25,false,new ArrayList<>());
-    Po po3 = new Po("Joachim",150,18,false,new ArrayList<>());
-
     public Boolean ChoixEvenementJoueur(String question){
         boolean choixX = false;
         String prendreDejeuner = "";
@@ -139,27 +244,33 @@ public class Main {
         switch (choixDeClasse) {
             case 1:
                 System.out.println("Vous avez choisi la classe codeur débutant");
-                Joueur debutant = new Joueur(nomJoueur, 30,5,false, new Hashtable());
+                Joueur debutant = new Joueur(nomJoueur, 30, 5, false,
+                        new Hashtable<String, Integer>(), 0, 5, 0);
                 joueur = debutant;
                 break;
             case 2:
                 System.out.println("Vous avez choisi la classe codeur rapide");
-                Joueur rapide = new Joueur(nomJoueur, 25,7,false, new Hashtable());
+                Joueur rapide = new Joueur(nomJoueur, 25, 7, false,
+                        new Hashtable<String, Integer>(), 0, 5, 0);
                 joueur = rapide;
                 break;
             case 3:
                 System.out.println("Vous avez choisi la classe codeur lent");
-                Joueur lent = new Joueur(nomJoueur, 40,3,false, new Hashtable());
+                Joueur lent = new Joueur(nomJoueur, 40, 3, false,
+                        new Hashtable<String, Integer>(), 0, 5, 0);
                 joueur = lent;
                 break;
             case 4:
                 System.out.println("Vous avez choisi la classe codeur raciste");
-                Joueur raciste = new Joueur(nomJoueur, 28,7,false, new Hashtable());
+                Joueur raciste = new Joueur(nomJoueur, 28, 7, false,
+                        new Hashtable<String, Integer>(), 0, 5, 0);
                 joueur = raciste;
                 break;
             default:
                 System.out.println("Choix de classe non valide");
         }
+        joueur.getInventaire().put("J'ai besoin d'une pause", 0);
+        joueur.getInventaire().put("Je suis noir", 0);
 
         /*Premier choix du joueur et début du jeu*/
         System.out.println("Vous allez a présent pouvoir commencer votre journée de codeur");
@@ -183,12 +294,19 @@ public class Main {
                         System.out.println("Quelle fier allure ! (une fille vous fait clin d'oeuil)");
 
                         /* Un combat se lance contre la SNCF */
-                        /* fonction fight "return Bool True/False" fight(joueur, train1) */
+                        /* fonction fight "return Bool True/False" fight(joueur, train3) */
+                        combat = Fight(joueur, train3);
+                        if (combat){
+                            System.out.println("Vous avez surmonté le rer.");
+                        }else {
+                            System.out.println("Game over t viré de la coding le rer t as ez.");
+                            break;
+                        }
 
                         /* Le joueur arrive à la coding factory en retard !*/
                         System.out.println("Vous êtes arrivé à la coding factory. Mais ! En retard ...");
 
-                        /* Le Po enguele l'élève en retard */
+                        /* Le Po engueule l'élève en retard */
                         System.out.println(String.format("Le PO : Alors, %s vous arrivez en retard ! (le PO s'énèrve, ce qui vous stress ...)", joueur.getNom()));
 
                         /* Comme le joueur à prit un bon repas, il ne répond pas au PO */
@@ -204,10 +322,24 @@ public class Main {
                             /* Un combat se lance contre un Bug de niveau Easy */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug1) */
+                            combat = Fight(joueur, bug1);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un petit bug.");
+                                break;
+                            }
 
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            combat = Fight(joueur, bug1);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un petit bug.");
+                                break;
+                            }
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -217,24 +349,42 @@ public class Main {
                             if (combatRepas){
 
                                 /* un combat se lance avec l'étudiant */
-                                System.out.println("Vous avez décidé d'affronter l'étudiant !");
+                                System.out.println("Vous avez décidé d'affronter l'étudiant qui n'était autre " +
+                                        "que Kévin !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                combat = Fight(joueur, kevin);
 
                                 /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                if (combat){
 
                                     /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
                                     /* restaurer les pv du joueur */
+                                    joueur.setPointDeVie(35);
+                                    Shop(joueur);
 
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -245,10 +395,19 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
                                     }else {
 
                                         /* na pas bu de café */
@@ -257,10 +416,25 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug2);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
                                     }
                                 }
                                 else {
@@ -271,10 +445,24 @@ public class Main {
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -285,14 +473,31 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
+
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
                                     }else {
 
                                         /* na pas bu de café */
@@ -301,14 +506,37 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
+
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -316,14 +544,36 @@ public class Main {
 
                                 /* Vous arrivez en retard et le Po s'énerve contre vous */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
+                                combat = Fight(joueur, po1);
+                                if (combat){
+                                    System.out.println("Bien joué le Po vous a tout réglé.");
+                                }else {
+                                    System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                            "oups... PERDU !.");
+                                    break;
+                                }
 
                                 /* Un nouveau problème est rencontré pendant votre projet */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                combat = Fight(joueur, bug1);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* Combat contre un gros bug */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                combat = Fight(joueur, bug3);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* choix de la pause café */
                                 System.out.println("Votre journée est bientot terminé !");
@@ -334,14 +584,30 @@ public class Main {
 
                                     /* bois un café et restaure ces pv */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                    joueur.setPointDeVie(35 + joueur.getNiv());
 
                                     /* affronte le po */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
 
                                 }else {
@@ -352,14 +618,36 @@ public class Main {
                                     /* combat contre un bug */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* combat contre le Po */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }
 
@@ -376,10 +664,24 @@ public class Main {
                             /* Un combat se lance contre un Bug de niveau medium */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug2) */
+                            combat = Fight(joueur, bug2);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                break;
+                            }
 
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            combat = Fight(joueur, bug1);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                break;
+                            }
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -391,22 +693,39 @@ public class Main {
                                 /* un combat se lance avec l'étudiant */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                combat = Fight(joueur, kevin);
 
                                 /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                if (combat){
 
                                     /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
                                     /* restaurer les pv du joueur */
+                                    joueur.setPointDeVie(35 + joueur.getNiv());
+                                    Shop(joueur);
 
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -421,6 +740,14 @@ public class Main {
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                     }else {
 
@@ -430,10 +757,25 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
                                     }
                                 }
                                 else {
@@ -444,10 +786,24 @@ public class Main {
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -458,14 +814,30 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
 
                                     }else {
 
@@ -475,14 +847,36 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -493,10 +887,24 @@ public class Main {
                                 /* Un nouveau problème est rencontré pendant votre projet */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                combat = Fight(joueur, bug1);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* Combat contre un gros bug */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                combat = Fight(joueur, bug3);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* choix de la pause café */
                                 System.out.println("Votre journée est bientot terminé !");
@@ -507,14 +915,30 @@ public class Main {
 
                                     /* bois un café et restaure ces pv */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                    joueur.setPointDeVie(35 + joueur.getNiv());
 
                                     /* affronte le po */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }else {
 
@@ -524,14 +948,36 @@ public class Main {
                                     /* combat contre un bug */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* combat contre le Po */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }
                             }
@@ -554,10 +1000,24 @@ public class Main {
                             /* Un combat se lance contre un Bug de niveau Easy */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug1) */
+                            combat = Fight(joueur, bug1);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                break;
+                            }
 
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            combat = Fight(joueur, bug1);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                break;
+                            }
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -569,22 +1029,39 @@ public class Main {
                                 /* un combat se lance avec l'étudiant */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                combat = Fight(joueur, kevin);
 
                                 /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                if (combat){
 
                                     /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
                                     /* restaurer les pv du joueur */
+                                    joueur.setPointDeVie(35 + joueur.getNiv());
+                                    Shop(joueur);
 
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -595,10 +1072,19 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                     }else {
 
@@ -608,10 +1094,25 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                     }
                                 }
@@ -623,10 +1124,24 @@ public class Main {
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -637,14 +1152,31 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
+
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
 
                                     }else {
 
@@ -654,14 +1186,37 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
+
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
 
                                     }
                                 }
@@ -673,10 +1228,24 @@ public class Main {
                                 /* Un nouveau problème est rencontré pendant votre projet */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                combat = Fight(joueur, bug1);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* Combat contre un gros bug */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                combat = Fight(joueur, bug3);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* choix de la pause café */
                                 System.out.println("Votre journée est bientot terminé !");
@@ -691,10 +1260,25 @@ public class Main {
                                     /* affronte le po */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }else {
 
@@ -704,14 +1288,36 @@ public class Main {
                                     /* combat contre un bug */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* combat contre le Po */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }
                             }
@@ -727,10 +1333,24 @@ public class Main {
                             /* Un combat se lance contre un Bug de niveau medium */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug2) */
+                            combat = Fight(joueur, bug2);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                break;
+                            }
 
                             /* Malheuresuement le joueur rencontre un autre problème */
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            combat = Fight(joueur, bug1);
+                            if (combat){
+                                System.out.println("Vous avez surmonté le bug IZI.");
+                            }else {
+                                System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                break;
+                            }
 
                             /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
@@ -742,22 +1362,39 @@ public class Main {
                                 /* un combat se lance avec l'étudiant */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                combat = Fight(joueur, kevin);
 
                                 /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                if (combat){
 
                                     /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
                                     /* restaurer les pv du joueur */
+                                    joueur.setPointDeVie(35 + joueur.getNiv());
+                                    Shop(joueur);
 
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -768,10 +1405,19 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                     }else {
 
@@ -781,10 +1427,25 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                     }
                                 }
@@ -796,10 +1457,24 @@ public class Main {
                                     /* Un nouveau problème est rencontré pendant votre projet */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* Combat contre un gros bug */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    combat = Fight(joueur, bug3);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* choix de la pause café */
                                     System.out.println("Votre journée est bientot terminé !");
@@ -810,14 +1485,30 @@ public class Main {
 
                                         /* bois un café et restaure ces pv */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                        joueur.setPointDeVie(35 + joueur.getNiv());
 
                                         /* affronte le po */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
 
                                     }else {
 
@@ -827,14 +1518,36 @@ public class Main {
                                         /* combat contre un bug */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        combat = Fight(joueur, bug1);
+                                        if (combat){
+                                            System.out.println("Vous avez surmonté le bug IZI.");
+                                        }else {
+                                            System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                            break;
+                                        }
 
                                         /* combat contre le Po */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        combat = Fight(joueur, po1);
+                                        if (combat){
+                                            System.out.println("Bien joué le Po vous a tout réglé.");
+                                        }else {
+                                            System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                    "oups... PERDU !.");
+                                            break;
+                                        }
 
                                         /* affronte benoit */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        combat = Fight(joueur, po2);
+                                        if (combat){
+                                            System.out.println("Bien joué vous avez vaincu Benoit !");
+                                        }else {
+                                            System.out.println("Benoit vous vire... CHEH.");
+                                            break;
+                                        }
 
                                     }
                                 }
@@ -846,10 +1559,24 @@ public class Main {
                                 /* Un nouveau problème est rencontré pendant votre projet */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                combat = Fight(joueur, bug1);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* Combat contre un gros bug */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                combat = Fight(joueur, bug3);
+                                if (combat){
+                                    System.out.println("Vous avez surmonté le bug IZI.");
+                                }else {
+                                    System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                    break;
+                                }
 
                                 /* choix de la pause café */
                                 System.out.println("Votre journée est bientot terminé !");
@@ -860,14 +1587,30 @@ public class Main {
 
                                     /* bois un café et restaure ces pv */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
+                                    joueur.setPointDeVie(35 + joueur.getNiv());
 
                                     /* affronte le po */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }else {
 
@@ -877,14 +1620,36 @@ public class Main {
                                     /* combat contre un bug */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    combat = Fight(joueur, bug1);
+                                    if (combat){
+                                        System.out.println("Vous avez surmonté le bug IZI.");
+                                    }else {
+                                        System.out.println("Game over t viré de la coding tu sais même pas gérer un bug.");
+                                        break;
+                                    }
 
                                     /* combat contre le Po */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    combat = Fight(joueur, po1);
+                                    if (combat){
+                                        System.out.println("Bien joué le Po vous a tout réglé.");
+                                    }else {
+                                        System.out.println("Le Po pris d'énervement explose votre mac contre le mur, " +
+                                                "oups... PERDU !.");
+                                        break;
+                                    }
 
                                     /* affronte benoit */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    combat = Fight(joueur, po2);
+                                    if (combat){
+                                        System.out.println("Bien joué vous avez vaincu Benoit !");
+                                    }else {
+                                        System.out.println("Benoit vous vire... CHEH.");
+                                        break;
+                                    }
 
                                 }
                             }
@@ -897,6 +1662,7 @@ public class Main {
                 /* le joueur n'a pris de petit dejeuner il ne peut pas commencer ça journée il meurt */
                 System.out.println("Vous n'avez pas pris de petit déjeuner vous etes mort !!");
                 /* mettre les pv du joueur a 0 */
+                break;
             }
 
             /* Incrémenter un jours */
@@ -905,21 +1671,7 @@ public class Main {
 
     }
     public static void main(String[] args) {
-        Sncf kevin = new Sncf("Kévin", 30, 5, false, new ArrayList<>());
-        Joueur killian = new Joueur("Killian", 30, 5, false, new Hashtable());
-        killian.Attaquer(kevin);
-      
-        System.out.println(killian.Battle());
-        kevin.Attaquer(killian);
-      
-        // Objet popo = new Objet("Potion","Heal",40);
-        // killian.Utiliser(popo);
-        System.out.println(kevin.getPointDeVie());
-
-        Joueur test = new Joueur("test",100,10,false,new Hashtable());
-        test.interagir(test);
-
-
-
+        Main mainInstance = new Main();
+        mainInstance.Start();
     }
 }

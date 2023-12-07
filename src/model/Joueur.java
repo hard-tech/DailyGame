@@ -1,5 +1,9 @@
 package model;
 import java.util.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Joueur extends  Personnage implements Interactuable{
     private Hashtable<String, Integer> inventaire = new Hashtable<>();
@@ -126,6 +130,20 @@ public class Joueur extends  Personnage implements Interactuable{
                 joueur.getInventaire().replace(nomObjet, quantiteActuelle - 1);
             }
         }
+        else if (objet.getCapacite().toLowerCase().contains("buff")) {
+            this.setForce(this.getForce() + objet.getValeur());
+            int force = objet.getValeur();
+            System.out.println("Vous devenez de plus en plus bronzé et vous gagnez définitivement "
+                    + force + " de force.");
+
+            // Mettez à jour la quantité de l'objet dans l'inventaire
+            String nomObjet = objet.getNom();
+            if (joueur.getInventaire().containsKey(nomObjet)) {
+                System.out.println("un objet est retiré.");
+                int quantiteActuelle = joueur.getInventaire().get(nomObjet);
+                joueur.getInventaire().replace(nomObjet, quantiteActuelle - 1);
+            }
+        }
     }
     /* Attaquer */
 
@@ -209,5 +227,7 @@ public class Joueur extends  Personnage implements Interactuable{
         }
         return choix;
     }
+
+
 }
 
