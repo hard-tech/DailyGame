@@ -33,4 +33,10 @@ public class Po extends Ennemi{
         System.out.println("Le Po vous dis qu'il faut juste chercher sur internet (gros noob). " +
                 "Vous perdez " + degat + " PV.");
     }
+
+    @Override
+    public void Defendre(Personnage target) {
+        this.setDefense(true);
+        System.out.println("Le Po a un coup de fil à passer il ne vous écoute plus. (Défense)");
+    }
 }

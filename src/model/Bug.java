@@ -33,4 +33,11 @@ public class Bug extends Ennemi{
         System.out.println("Chat GPT ne vous a pas bien aidé et le bug persiste. Vous perdez " +
                 degat + " PV.");
     }
+
+    @Override
+    public void Defendre(Personnage target) {
+        this.setDefense(true);
+        System.out.println("Le bug vous donne une documentation pourrie pour faire semblant" +
+                " de vous aider. (Défense)");
+    }
 }

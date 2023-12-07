@@ -33,4 +33,12 @@ public class Sncf extends Ennemi{
         System.out.println("Une annonce SNCF retenti pour vous dire que vous allez " +
                 "devoir attendre 10min de plus. Vous perdez " + degat + " PV.");
     }
+
+    @Override
+    public void Defendre(Personnage target) {
+        this.setDefense(true);
+        System.out.println("Un controleur arrive et contrôle les titres de transports. " +
+                "(Défense)");
+    }
+
 }

@@ -60,7 +60,7 @@ public class Personnage {
     }
 
     /* Methode qui à pour action de se défendre */
-    public void Defendre(){
+    public void Defendre(Personnage target){
         this.setDefense(true);
     }
 

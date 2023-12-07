@@ -71,8 +71,19 @@ public class Joueur extends  Personnage implements Interactuable{
     /* Defendre */
 
     @Override
-    public void Defendre() {
-        super.Defendre();
+    public void Defendre(Personnage target) {
+        this.setDefense(true);
+        if (target instanceof Bug) {
+            System.out.println("Vous installez un VPN et vous vous préparez au prochain bug.");
+        }
+        if (target instanceof Po) {
+            System.out.println("Vous vous préparez mentalement à l'ennuie et au sommeil " +
+                    "qui va arriver.");
+        }
+        if (target instanceof Sncf) {
+            System.out.println("Vous mettez votre casque et mettez votre musique pour " +
+                    "ne pas entendre les nouvelles (vous êtes un peu dans le déni).");
+        }
     }
 
     // équiper

@@ -18,8 +18,8 @@ public class Ennemi extends Personnage implements Interactuable {
     }
 
     @Override
-    public void Defendre() {
-        super.Defendre();
+    public void Defendre(Personnage target) {
+
     }
 
     public ArrayList<String> getLoot() {

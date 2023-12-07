@@ -6,7 +6,7 @@ import java.util.Hashtable;
 
 public class Main {
     public static void main(String[] args) {
-        Po kevin = new Po("Kévin", 30, 5, false, new ArrayList<>());
+        Sncf kevin = new Sncf("Kévin", 30, 5, false, new ArrayList<>());
         Joueur killian = new Joueur("Killian", 30, 5, false, new Hashtable());
         killian.Attaquer(kevin);
         kevin.Attaquer(killian);
