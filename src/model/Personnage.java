@@ -1,4 +1,5 @@
 package model;
+import java.util.Objects;
 import java.util.Scanner;
 public class Personnage {
     private String nom;
@@ -46,18 +47,20 @@ public class Personnage {
     }
 
     /* Methode qui à pour action d'attaquer */
-    public void Attaquer(Ennemi target){
-        if (target.isDefense()){
+    public void Attaquer(Personnage target){
+        int degat = 0;
+        if (target.isDefense()) {
             target.setPointDeVie(target.getPointDeVie() - (this.getForce() / 2));
-        }
-        else {
+            degat = target.getPointDeVie() - (this.getForce() / 2);
+        } else {
             target.setPointDeVie(target.getPointDeVie() - this.getForce());
+            degat = target.getPointDeVie() - this.getForce();
         }
         target.setDefense(false);
     }
 
     /* Methode qui à pour action de se défendre */
-    public void Defendre(){
+    public void Defendre(Personnage target){
         this.setDefense(true);
     }
 

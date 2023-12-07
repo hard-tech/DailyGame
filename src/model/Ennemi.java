@@ -13,13 +13,13 @@ public class Ennemi extends Personnage implements Interactuable {
     }
 
     @Override
-    public void Attaquer(Ennemi target) {
+    public void Attaquer(Personnage target) {
         super.Attaquer(target);
     }
 
     @Override
-    public void Defendre() {
-        super.Defendre();
+    public void Defendre(Personnage target) {
+
     }
 
     public ArrayList<String> getLoot() {

@@ -42,15 +42,48 @@ public class Joueur extends  Personnage implements Interactuable{
     /* Attaquer */
 
     @Override
-    public void Attaquer(Ennemi target) {
-        super.Attaquer(target);
+    public void Attaquer(Personnage target) {
+        int degat = 0;
+        if (target.isDefense()) {
+            target.setPointDeVie(target.getPointDeVie() - (this.getForce() / 2));
+            degat = (this.getForce() / 2);
+        } else {
+            target.setPointDeVie(target.getPointDeVie() - this.getForce());
+            degat = this.getForce();
+        }
+        target.setDefense(false);
+        if (target instanceof Bug) {
+            System.out.println("Vous écrivez un nouveau code qui tue ça mère. Vous infligez " +
+                    degat + " dégats");
+        }
+        if (target instanceof Po) {
+            System.out.println("Vous demandez encore une solution a un nième problème que vous avez. " +
+                    "Vous infligez " +
+                    degat + " dégats");
+        }
+        if (target instanceof Sncf) {
+            System.out.println("Vous insultez mentalement tout les travailleurs de la SNCF pour leurs problèmes. " +
+                    "Vous infligez " +
+                    degat + " dégats");
+        }
     }
 
     /* Defendre */
 
     @Override
-    public void Defendre() {
-        super.Defendre();
+    public void Defendre(Personnage target) {
+        this.setDefense(true);
+        if (target instanceof Bug) {
+            System.out.println("Vous installez un VPN et vous vous préparez au prochain bug.");
+        }
+        if (target instanceof Po) {
+            System.out.println("Vous vous préparez mentalement à l'ennuie et au sommeil " +
+                    "qui va arriver.");
+        }
+        if (target instanceof Sncf) {
+            System.out.println("Vous mettez votre casque et mettez votre musique pour " +
+                    "ne pas entendre les nouvelles (vous êtes un peu dans le déni).");
+        }
     }
 
     // équiper
