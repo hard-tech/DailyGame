@@ -3,17 +3,23 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ennemi {
+public class Ennemi extends Personnage implements Interactuable {
     /* Tableau contennant la liste des élément looter par les ennemies */
-    private ArrayList<String> loot = new ArrayList<String>() ;
+    private ArrayList<String> loot = new ArrayList<String>();
 
-    /* Capacité des ennemies */
-    public void capacite(){
-        System.out.println("Capacité des ennemies");
+    public Ennemi(String nom, int pointDeVie, int force, boolean defense, ArrayList<String> loot) {
+        super(nom, pointDeVie, force, defense);
+        this.loot = loot;
     }
 
-    public Ennemi(ArrayList<String> loot) {
-        this.loot = loot;
+    @Override
+    public void Attaquer(Personnage target) {
+        super.Attaquer(target);
+    }
+
+    @Override
+    public void Defendre(Personnage target) {
+
     }
 
     public ArrayList<String> getLoot() {
@@ -22,5 +28,11 @@ public class Ennemi {
 
     public void setLoot(ArrayList<String> loot) {
         this.loot = loot;
+    }
+
+
+    @Override
+    public void interagir(Object cible) {
+
     }
 }

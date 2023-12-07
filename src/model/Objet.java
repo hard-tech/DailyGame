@@ -1,8 +1,14 @@
 package model;
 
-public class Objet {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public  abstract class Objet implements Interactuable {
+
     private String nom;
-    private String capacite;
+    private String capacite = "";
+    private int valeur = 0;
 
     public String getNom() {
         return nom;
@@ -20,8 +26,17 @@ public class Objet {
         this.capacite = capacite;
     }
 
-    public Objet(String nom, String capacite) {
+    public int getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(int valeur) {
+        this.valeur = valeur;
+    }
+
+    public Objet(String nom, String capacite, int valeur) {
         this.nom = nom;
         this.capacite = capacite;
+        this.valeur = valeur;
     }
 }
