@@ -1,13 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Ennemi extends Personnage implements Interactuable {
     /* Tableau contennant la liste des élément looter par les ennemies */
-    private ArrayList<String> loot = new ArrayList<String>();
+    private Dictionary loot = new Hashtable();
 
-    public Ennemi(String nom, int pointDeVie, int force, boolean defense, ArrayList<String> loot) {
+    public Ennemi(String nom, int pointDeVie, int force, boolean defense, Dictionary loot) {
         super(nom, pointDeVie, force, defense);
         this.loot = loot;
     }
@@ -22,17 +24,17 @@ public class Ennemi extends Personnage implements Interactuable {
 
     }
 
-    public ArrayList<String> getLoot() {
+    public Dictionary getLoot() {
         return loot;
     }
 
-    public void setLoot(ArrayList<String> loot) {
-        this.loot = loot;
+    public void setLoot(String nom, int valeur) {
+        this.loot.put(nom, valeur);
     }
 
 
     @Override
-    public void interagir(Object cible) {
-
+    public String interagir(Object cible) {
+        return "0";
     }
 }

@@ -6,6 +6,78 @@ import java.util.Scanner;
 // import control.*;
 
 public class Main {
+    Potion pause = new Potion("J'ai besoin d'une pause", "heal", 15);
+
+    public boolean Fight(Joueur joueur, Ennemi ennemi){
+        boolean ennemiVie = true;
+        boolean victoire = false;
+        boolean fight = true;
+        boolean choixFait = true;
+        while (fight){
+            while (choixFait){
+                System.out.println("Vous avez " + joueur.getPointDeVie() + " PV");
+                String choix = joueur.interagir(joueur);
+                switch (choix) {
+                    case "1":
+                        joueur.Attaquer(ennemi);
+                        choixFait = false;
+                        break;
+                    case "2":
+                        joueur.Defendre(ennemi);
+                        choixFait = false;
+                        break;
+                    case "3":
+                        if (joueur.getInventaire().get("J'ai besoin d'une pause") > 0){
+                            joueur.UtiliserObjet(joueur, pause);
+                            choixFait = false;
+                        }
+                        else{
+                            System.out.println("T'as pris une pause y'a 2min frère...");
+                            System.out.println("");
+                        }
+                        break;
+                    case "4":
+                        System.out.println("Votre ennemi " + ennemi.getNom() + " a " + ennemi.getPointDeVie()
+                        + " PV et " + ennemi.getForce() + " de force.");
+                        choixFait = false;
+                        break;
+                    default:
+                        System.out.println("Choix invalide");
+                }
+            }
+
+            if (ennemi.getPointDeVie() <= 0) {
+                joueur.lootEnnemi(ennemi);
+                System.out.println("");
+                if (joueur.getExp() >= 35){
+                    joueur.levelUp();
+                }
+                System.out.println(joueur.getInventaire());
+                ennemiVie = false;
+                fight = false;
+                victoire = true;
+            }
+
+            try {
+                Thread.sleep(1500);  // Pause d'une seconde (1000 millisecondes)
+            } catch (InterruptedException e) {
+                // Gestion de l'exception si la pause est interrompue
+                e.printStackTrace();
+            }
+
+            if (ennemiVie) {
+                System.out.println("");
+                System.out.println("Attaque ennemi");
+                ennemi.Attaquer(joueur);
+                choixFait = true;
+                System.out.println("");
+                if (joueur.getPointDeVie() <= 0) {
+                    fight = false;
+                }
+            }
+        }
+        return victoire;
+    }
 
     Sncf train1 = new Sncf("RER B",100,5,false,new ArrayList<>());
     Sncf train2 = new Sncf("RER A",110,4,false,new ArrayList<>());
@@ -833,7 +905,6 @@ public class Main {
 
     }
     public static void main(String[] args) {
-        Main mainInstance = new Main();
         Sncf kevin = new Sncf("Kévin", 30, 5, false, new ArrayList<>());
         Joueur killian = new Joueur("Killian", 30, 5, false, new Hashtable());
         killian.Attaquer(kevin);
@@ -845,11 +916,8 @@ public class Main {
         // killian.Utiliser(popo);
         System.out.println(kevin.getPointDeVie());
 
-        //Joueur test = new Joueur("test",100,10,false,new Hashtable());
-        //test.interagir(test);
-
-        mainInstance.Start();
-
+        Joueur test = new Joueur("test",100,10,false,new Hashtable());
+        test.interagir(test);
 
 
 

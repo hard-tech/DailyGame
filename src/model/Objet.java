@@ -10,6 +10,11 @@ public  abstract class Objet implements Interactuable {
     private String capacite = "";
     private int valeur = 0;
 
+    @Override
+    public String interagir(Object cible) {
+        return null;
+    }
+
     public String getNom() {
         return nom;
     }

@@ -1,9 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 
 public class Bug extends Ennemi{
-    public Bug(String nom, int pointDeVie, int force, boolean defense, ArrayList<String> loot) {
+    public Bug(String nom, int pointDeVie, int force, boolean defense, Dictionary loot) {
         super(nom, pointDeVie, force, defense, loot);
     }
 
