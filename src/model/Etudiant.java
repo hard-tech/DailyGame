@@ -30,7 +30,8 @@ public class Etudiant extends Ennemi{
     }
     @Override
     public void Attaquer(Personnage target) {
-        System.out.println("Kévin vous tape avec ses points. Mais cela ne vous fait pas de dégâts.");
+        target.setPointDeVie(target.getPointDeVie() - 1);
+        System.out.println("Kévin vous tape avec ses points. Mais cela ne vous fait que 1 dégât.");
     }
 
     @Override
