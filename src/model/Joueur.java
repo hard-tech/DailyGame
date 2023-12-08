@@ -217,11 +217,11 @@ public class Joueur extends  Personnage implements Interactuable{
         if (this instanceof Personnage) {
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Que voulez-vous faire ?");
+            System.out.println("\nQue voulez-vous faire ?\n");
             System.out.println("1. Attaquer");
             System.out.println("2. Défense");
             System.out.println("3. J'ai besoin d'une pause");
-            System.out.println("4. Analyse");
+            System.out.println("4. Analyse\n");
 
             choix = scanner.next();
         }
