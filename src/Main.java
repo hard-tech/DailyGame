@@ -215,71 +215,72 @@ public class Main {
         return choixX;
     }
 
-    public void Start(){
+    public void Start(Joueur joueur){
+        if(joueur.getDay() == 0){
+            /* Début du jeu et choix de classe*/
+            System.out.println("Bonjour jeune étudiant !!");
+            System.out.println("Avant de commencer vous devez choisir une classe afin de commencer votre aventure !");
+            System.out.println("Diférentes classes : ");
+            System.out.println("1. Le codeur débutant : 30PV ; 5 ATTAQUE");
+            System.out.println("2. Le codeur rapide : 25 PV ; 7 ATTAQUE ");
+            System.out.println("3. Le codeur lent : 40PV ; 3 ATTAQUE");
+            System.out.println("4. Le Codeur raciste : 28 PV ;  7 ATTAQUE soit fait *_2 soit rate son ATTAQUE_");
+            Scanner scanner = new Scanner(System.in);
+            int choixDeClasse = scanner.nextInt();
 
-        /* Début du jeu et choix de classe*/
-        System.out.println("Bonjour jeune étudiant !!");
-        System.out.println("Avant de commencer vous devez choisir une classe afin de commencer votre aventure !");
-        System.out.println("Diférentes classes : ");
-        System.out.println("1. Le codeur débutant : 30PV ; 5 ATTAQUE");
-        System.out.println("2. Le codeur rapide : 25 PV ; 7 ATTAQUE ");
-        System.out.println("3. Le codeur lent : 40PV ; 3 ATTAQUE");
-        System.out.println("4. Le Codeur raciste : 28 PV ;  7 ATTAQUE soit fait *_2 soit rate son ATTAQUE_");
-        Scanner scanner = new Scanner(System.in);
-        int choixDeClasse = scanner.nextInt();
-
-        System.out.println("Comment vous applez vous ? : ");
-        Scanner name = new Scanner(System.in);
-        String nomJoueur = name.nextLine();
+            System.out.println("Comment vous applez vous ? : ");
+            Scanner name = new Scanner(System.in);
+            String nomJoueur = name.nextLine();
 
 
 
-        while (choixDeClasse < 1 || choixDeClasse > 4){
-            System.out.println("Veulliez choisir parmi les choix proposé");
-            choixDeClasse = scanner.nextInt();
+                while (choixDeClasse < 1 || choixDeClasse > 4){
+                    System.out.println("Veulliez choisir parmi les choix proposé");
+                    choixDeClasse = scanner.nextInt();
+                }
+
+                joueur = null;
+
+                switch (choixDeClasse) {
+                    case 1:
+                        System.out.println("Vous avez choisi la classe codeur débutant");
+                        Joueur debutant = new Joueur(nomJoueur, 30, 5, false,
+                                new Hashtable<String, Integer>(), 0, 5, 0, 0);
+                        joueur = debutant;
+                        break;
+                    case 2:
+                        System.out.println("Vous avez choisi la classe codeur rapide");
+                        Joueur rapide = new Joueur(nomJoueur, 25, 7, false,
+                                new Hashtable<String, Integer>(), 0, 5, 0, 0);
+                        joueur = rapide;
+                        break;
+                    case 3:
+                        System.out.println("Vous avez choisi la classe codeur lent");
+                        Joueur lent = new Joueur(nomJoueur, 40, 3, false,
+                                new Hashtable<String, Integer>(), 0, 5, 0, 0);
+                        joueur = lent;
+                        break;
+                    case 4:
+                        System.out.println("Vous avez choisi la classe codeur raciste");
+                        Joueur raciste = new Joueur(nomJoueur, 28, 7, false,
+                                new Hashtable<String, Integer>(), 0, 5, 0, 0);
+                        joueur = raciste;
+                        break;
+                    default:
+                        System.out.println("Choix de classe non valide");
+                }
+                joueur.getInventaire().put("J'ai besoin d'une pause", 0);
+                joueur.getInventaire().put("Je suis noir", 0);
+
+                /*Premier choix du joueur et début du jeu*/
+                System.out.println("Vous allez a présent pouvoir commencer votre journée de codeur");
+                System.out.println("Dans ce jeu vous aller devoir faire des choix qui influencerons votre histoire");
+                System.out.println("Toute journée commence d'abord par un réveil ! ");
+
+                joueur.setDay(1);
         }
-
-        Joueur joueur = null;
-        
-        switch (choixDeClasse) {
-            case 1:
-                System.out.println("Vous avez choisi la classe codeur débutant");
-                Joueur debutant = new Joueur(nomJoueur, 30, 5, false,
-                        new Hashtable<String, Integer>(), 0, 5, 0);
-                joueur = debutant;
-                break;
-            case 2:
-                System.out.println("Vous avez choisi la classe codeur rapide");
-                Joueur rapide = new Joueur(nomJoueur, 25, 7, false,
-                        new Hashtable<String, Integer>(), 0, 5, 0);
-                joueur = rapide;
-                break;
-            case 3:
-                System.out.println("Vous avez choisi la classe codeur lent");
-                Joueur lent = new Joueur(nomJoueur, 40, 3, false,
-                        new Hashtable<String, Integer>(), 0, 5, 0);
-                joueur = lent;
-                break;
-            case 4:
-                System.out.println("Vous avez choisi la classe codeur raciste");
-                Joueur raciste = new Joueur(nomJoueur, 28, 7, false,
-                        new Hashtable<String, Integer>(), 0, 5, 0);
-                joueur = raciste;
-                break;
-            default:
-                System.out.println("Choix de classe non valide");
-        }
-        joueur.getInventaire().put("J'ai besoin d'une pause", 0);
-        joueur.getInventaire().put("Je suis noir", 0);
-
-        /*Premier choix du joueur et début du jeu*/
-        System.out.println("Vous allez a présent pouvoir commencer votre journée de codeur");
-        System.out.println("Dans ce jeu vous aller devoir faire des choix qui influencerons votre histoire");
-        System.out.println("Toute journée commence d'abord par un réveil ! ");
-
-        int day = 1;
-        while(day <= 5){
-            System.out.println("Jour actuel : " + day);
+        while(joueur.getDay() <= 5){
+            System.out.println("Jour actuel : " + joueur.getDay());
 
             /* Début du cycle d'un jour de jeu */
 
@@ -1666,12 +1667,16 @@ public class Main {
             }
 
             /* Incrémenter un jours */
-            day++;
+            joueur.setDay(joueur.getDay() + 1);
+            joueur.sauvegarderDonnees("sauvegarde.txt");
         }
 
     }
     public static void main(String[] args) {
+        Joueur joueur = new Joueur("", 0, 0, false,
+                new Hashtable<String, Integer>(), 0, 0, 0, 0);
+        joueur.chargerDonnees("sauvegarde.txt");
         Main mainInstance = new Main();
-        mainInstance.Start();
+        mainInstance.Start(joueur);
     }
 }

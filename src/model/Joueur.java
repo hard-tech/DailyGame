@@ -1,9 +1,6 @@
 package model;
 import java.util.*;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Joueur extends  Personnage implements Interactuable{
     private Hashtable<String, Integer> inventaire = new Hashtable<>();
@@ -11,14 +8,24 @@ public class Joueur extends  Personnage implements Interactuable{
     private int exp = 0;
     private int niv = 5;
     private int pins = 0;
+    private int day = 0;
 
     public Joueur(String nom, int pointDeVie, int force, boolean defense, Hashtable<String, Integer> inventaire,
-                  int exp, int niv, int pins) {
+                  int exp, int niv, int pins, int day) {
         super(nom, pointDeVie, force, defense);
         this.inventaire = inventaire;
         this.exp = exp;
         this.niv = niv;
         this.pins = pins;
+        this.day = day;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 
     public int getExp() {
@@ -228,6 +235,109 @@ public class Joueur extends  Personnage implements Interactuable{
         return choix;
     }
 
+    public void sauvegarderDonnees(String nomFichier) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomFichier))) {
+            // Écrire les données du joueur dans le fichier
+            writer.write("Nom: " + this.getNom());
+            writer.newLine();
+            writer.write("Point de Vie: " + this.getPointDeVie());
+            writer.newLine();
+            writer.write("Force: " + this.getForce());
+            writer.newLine();
+            writer.write("Inventaire:");
+            writer.newLine();
+            for (String element : this.inventaire.keySet()) {
+                writer.write(element + ": " + this.inventaire.get(element));
+                writer.newLine();
+            }
 
+            // Écrire l'arme actuelle
+            writer.write("Arme Actuelle: " + this.armeActuelle.getNom());
+            writer.newLine();
+
+            // Écrire l'expérience, le niveau et les pins
+            writer.write("Expérience: " + this.exp);
+            writer.newLine();
+            writer.write("Niveau: " + this.niv);
+            writer.newLine();
+            writer.write("Pins: " + this.pins);
+            writer.newLine();
+            writer.write("Jour: " + this.day);
+            writer.newLine();
+
+            System.out.println("Données du joueur sauvegardées avec succès dans " + nomFichier);
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la sauvegarde des données du joueur.");
+            e.printStackTrace();
+        }
+    }
+    public void chargerDonnees(String nomFichier) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(nomFichier))) {
+            String ligne;
+
+            // Lire et traiter chaque ligne du fichier
+            while ((ligne = reader.readLine()) != null) {
+                traiterLigne(ligne, reader);
+            }
+
+            System.out.println("Données du joueur chargées avec succès depuis " + nomFichier);
+        } catch (IOException e) {
+            System.err.println("Erreur lors du chargement des données du joueur.");
+            e.printStackTrace();
+        }
+    }
+
+    // Méthode pour traiter une ligne lue depuis le fichier
+    private void traiterLigne(String ligne, BufferedReader reader) {
+        // Split la ligne en fonction du ":" pour obtenir le nom de la propriété et sa valeur
+        String[] elements = ligne.split(":");
+        if (elements.length == 2) {
+            String propriete = elements[0].trim();
+            String valeur = elements[1].trim();
+
+            // Traiter chaque propriété
+            switch (propriete) {
+                case "Nom":
+                    this.setNom(valeur);
+                    break;
+                case "Point de Vie":
+                    this.setPointDeVie(Integer.parseInt(valeur));
+                    break;
+                case "Force":
+                    this.setForce(Integer.parseInt(valeur));
+                    break;
+                case "Jour":
+                    this.setDay(Integer.parseInt(valeur));
+                    break;
+                case "Arme Actuelle":
+                    this.getArmeActuelle().setNom(valeur);
+                case "Inventaire":
+                    // Lire les éléments de l'inventaire en passant le BufferedReader
+                    traiterInventaire(reader);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    // Méthode pour traiter l'inventaire depuis le fichier
+    private void traiterInventaire(BufferedReader reader) {
+        try {
+            String ligne;
+            // Lire chaque ligne de l'inventaire jusqu'à ce qu'une ligne vide soit rencontrée
+            while ((ligne = reader.readLine()) != null && !ligne.isEmpty()) {
+                String[] elements = ligne.split(":");
+                if (elements.length == 2) {
+                    String element = elements[0].trim();
+                    int quantite = Integer.parseInt(elements[1].trim());
+                    this.inventaire.put(element, quantite);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la lecture de l'inventaire.");
+            e.printStackTrace();
+        }
+    }
 }
 
