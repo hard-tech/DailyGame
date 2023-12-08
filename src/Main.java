@@ -35,18 +35,18 @@ public class Main {
         train3.setLoot("J'ai besoin d'une pause", 1);
 
         bug1.setLoot("exp", 20);
-        bug1.setLoot("pins", 15);
+        bug1.setLoot("pins", (int)(Math.random() * 15));
         bug1.setLoot("J'ai besoin d'une pause", 1);
 
         bug2.setLoot("exp", 30);
-        bug2.setLoot("pins", 25);
+        bug2.setLoot("pins", (int)(Math.random() * 35));
         bug2.setLoot("J'ai besoin d'une pause", 1);
 
         bug3.setLoot("exp", 40);
-        bug3.setLoot("pins", 35);
+        bug3.setLoot("pins", (int)(Math.random() * 45));
 
         po1.setLoot("exp", 65);
-        po1.setLoot("pins", 80);
+        po1.setLoot("pins", (int)(Math.random() * 70));
 
         po2.setLoot("exp", 1000);
         po2.setLoot("pins", 1000);
@@ -54,9 +54,10 @@ public class Main {
         po3.setLoot("exp", 1);
         po3.setLoot("pins", 1);
 
-        kevin.setLoot("exp", 65);
-        kevin.setLoot("pins", 80);
+        kevin.setLoot("exp", 1);
+        kevin.setLoot("pins", 0);
         kevin.setLoot("J'ai besoin d'une pause", 3);
+        kevin.setLoot("Je suis noir", 1);
     }
     Potion pause = new Potion("J'ai besoin d'une pause", "heal", 15);
     Potion noir = new Potion("Je suis noir", "buff", 2);
