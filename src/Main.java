@@ -298,6 +298,7 @@ public class Main {
                         /* Un combat se lance contre la SNCF */
                         /* fonction fight "return Bool True/False" fight(joueur, train3) */
                         combat = Fight(joueur, train3);
+                        train3.setPointDeVie(15);
                         if (combat){
                             System.out.println("Vous avez surmonté le rer.");
                         }else {
@@ -325,6 +326,7 @@ public class Main {
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug1) */
                             combat = Fight(joueur, bug1);
+                            bug1.setPointDeVie(10);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -336,6 +338,7 @@ public class Main {
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                             combat = Fight(joueur, bug1);
+                            bug1.setPointDeVie(10);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -355,6 +358,7 @@ public class Main {
                                         "que Kévin !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
                                 combat = Fight(joueur, kevin);
+                                kevin.setPointDeVie(35);
 
                                 /* résultat du combat avec l'élève */
                                 if (combat){
@@ -370,6 +374,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -381,6 +386,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -403,6 +409,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -419,6 +426,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug2);
+                                        bug2.setPointDeVie(20);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -430,6 +438,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -448,6 +457,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -459,6 +469,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -481,6 +492,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -494,6 +506,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -509,6 +522,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -520,6 +534,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -533,6 +548,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -547,6 +563,7 @@ public class Main {
                                 /* Vous arrivez en retard et le Po s'énerve contre vous */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
                                 combat = Fight(joueur, po1);
+                                po1.setPointDeVie(50);
                                 if (combat){
                                     System.out.println("Bien joué le Po vous a tout réglé.");
                                 }else {
@@ -559,6 +576,7 @@ public class Main {
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                 combat = Fight(joueur, bug1);
+                                bug1.setPointDeVie(10);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -570,6 +588,7 @@ public class Main {
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                 combat = Fight(joueur, bug3);
+                                bug3.setPointDeVie(25);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -592,6 +611,7 @@ public class Main {
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -604,6 +624,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -621,6 +642,7 @@ public class Main {
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -632,6 +654,7 @@ public class Main {
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -644,6 +667,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -667,6 +691,7 @@ public class Main {
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug2) */
                             combat = Fight(joueur, bug2);
+                            bug2.setPointDeVie(25);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -678,6 +703,7 @@ public class Main {
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                             combat = Fight(joueur, bug1);
+                            bug1.setPointDeVie(10);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -696,6 +722,7 @@ public class Main {
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
                                 combat = Fight(joueur, kevin);
+                                kevin.setPointDeVie(35);
 
                                 /* résultat du combat avec l'élève */
                                 if (combat){
@@ -711,6 +738,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -722,6 +750,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -743,6 +772,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -760,6 +790,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -771,6 +802,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -789,6 +821,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -800,6 +833,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -822,6 +856,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -834,6 +869,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -850,6 +886,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -861,6 +898,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -873,6 +911,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -890,6 +929,7 @@ public class Main {
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                 combat = Fight(joueur, bug1);
+                                bug1.setPointDeVie(10);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -901,6 +941,8 @@ public class Main {
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                 combat = Fight(joueur, bug3);
+                                bug3.setPointDeVie(25);
+
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -923,6 +965,7 @@ public class Main {
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -935,6 +978,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -951,6 +995,7 @@ public class Main {
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -962,6 +1007,7 @@ public class Main {
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -974,6 +1020,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -1003,6 +1050,7 @@ public class Main {
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug1) */
                             combat = Fight(joueur, bug1);
+                            bug1.setPointDeVie(10);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -1014,6 +1062,7 @@ public class Main {
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                             combat = Fight(joueur, bug1);
+                            bug1.setPointDeVie(10);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -1032,6 +1081,7 @@ public class Main {
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
                                 combat = Fight(joueur, kevin);
+                                kevin.setPointDeVie(35);
 
                                 /* résultat du combat avec l'élève */
                                 if (combat){
@@ -1047,6 +1097,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1058,6 +1109,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1080,6 +1132,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1097,6 +1150,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -1108,6 +1162,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1127,6 +1182,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1138,6 +1194,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1160,6 +1217,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1173,6 +1231,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -1189,6 +1248,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -1200,6 +1260,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1213,6 +1274,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -1231,6 +1293,7 @@ public class Main {
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                 combat = Fight(joueur, bug1);
+                                bug1.setPointDeVie(10);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -1242,6 +1305,7 @@ public class Main {
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                 combat = Fight(joueur, bug3);
+                                bug3.setPointDeVie(25);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -1263,6 +1327,7 @@ public class Main {
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -1275,6 +1340,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -1291,6 +1357,7 @@ public class Main {
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1302,6 +1369,7 @@ public class Main {
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -1314,6 +1382,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -1336,6 +1405,7 @@ public class Main {
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
                             /* fonction fight "return Bool True/False" fight(joueur, bug2) */
                             combat = Fight(joueur, bug2);
+                            bug2.setPointDeVie(20);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -1347,6 +1417,7 @@ public class Main {
                             System.out.println("Malheuresement un second bug apparait !");
                             /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                             combat = Fight(joueur, bug1);
+                            bug1.setPointDeVie(10);
                             if (combat){
                                 System.out.println("Vous avez surmonté le bug IZI.");
                             }else {
@@ -1365,6 +1436,7 @@ public class Main {
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
                                 /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
                                 combat = Fight(joueur, kevin);
+                                kevin.setPointDeVie(35);
 
                                 /* résultat du combat avec l'élève */
                                 if (combat){
@@ -1380,6 +1452,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1391,6 +1464,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1413,6 +1487,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1430,6 +1505,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -1441,6 +1517,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1460,6 +1537,7 @@ public class Main {
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1471,6 +1549,7 @@ public class Main {
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                     combat = Fight(joueur, bug3);
+                                    bug3.setPointDeVie(25);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1493,6 +1572,7 @@ public class Main {
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1505,6 +1585,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -1521,6 +1602,7 @@ public class Main {
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                         /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                         combat = Fight(joueur, bug1);
+                                        bug1.setPointDeVie(10);
                                         if (combat){
                                             System.out.println("Vous avez surmonté le bug IZI.");
                                         }else {
@@ -1532,6 +1614,7 @@ public class Main {
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
                                         /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                         combat = Fight(joueur, po1);
+                                        po1.setPointDeVie(50);
                                         if (combat){
                                             System.out.println("Bien joué le Po vous a tout réglé.");
                                         }else {
@@ -1544,6 +1627,7 @@ public class Main {
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                         /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                         combat = Fight(joueur, po2);
+                                        po2.setPointDeVie(60);
                                         if (combat){
                                             System.out.println("Bien joué vous avez vaincu Benoit !");
                                         }else {
@@ -1562,6 +1646,7 @@ public class Main {
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                 combat = Fight(joueur, bug1);
+                                bug1.setPointDeVie(10);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -1573,6 +1658,7 @@ public class Main {
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
                                 /* fonction fight "return Bool True/False" fight(joueur,bug3) */
                                 combat = Fight(joueur, bug3);
+                                bug3.setPointDeVie(25);
                                 if (combat){
                                     System.out.println("Vous avez surmonté le bug IZI.");
                                 }else {
@@ -1595,6 +1681,7 @@ public class Main {
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -1607,6 +1694,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
@@ -1623,6 +1711,7 @@ public class Main {
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
                                     /* fonction fight "return Bool True/False" fight(joueur,bug1) */
                                     combat = Fight(joueur, bug1);
+                                    bug1.setPointDeVie(10);
                                     if (combat){
                                         System.out.println("Vous avez surmonté le bug IZI.");
                                     }else {
@@ -1634,6 +1723,7 @@ public class Main {
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
                                     /* fonction fight "return Bool True/False" fight(joueur,PO) */
                                     combat = Fight(joueur, po1);
+                                    po1.setPointDeVie(50);
                                     if (combat){
                                         System.out.println("Bien joué le Po vous a tout réglé.");
                                     }else {
@@ -1646,6 +1736,7 @@ public class Main {
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
                                     /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
                                     combat = Fight(joueur, po2);
+                                    po2.setPointDeVie(60);
                                     if (combat){
                                         System.out.println("Bien joué vous avez vaincu Benoit !");
                                     }else {
