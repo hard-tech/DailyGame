@@ -40,7 +40,7 @@ public class Main {
 
     public void Start(){
 
-        /* Début du jeu et choix de classe*/
+        /*  Début du jeu et choix de classe */
         System.out.println("Bonjour jeune étudiant !!");
         System.out.println("Avant de commencer vous devez choisir une classe afin de commencer votre aventure !");
         System.out.println("Diférentes classes : ");
@@ -91,7 +91,7 @@ public class Main {
 
 
 
-        /*Premier choix du joueur et début du jeu*/
+        /* Premier choix du joueur et début du jeu */
         System.out.println("Vous allez a présent pouvoir commencer votre journée de codeur");
         System.out.println("Dans ce jeu vous aller devoir faire des choix qui influencerons votre histoire");
         System.out.println("Toute journée commence d'abord par un réveil ! ");
@@ -101,101 +101,101 @@ public class Main {
             System.out.println("Jour actuel : " + day);
 
 
-            /* Début du cycle d'un jour de jeu */
+            /*  Début du cycle d'un jour de jeu  */
 
             System.out.println("Vous venez de vous lever.");
             boolean dejeuner = ChoixEvenementJoueur("Maintenant que vous êtes debout, voulez-vous prendre votre petit déjeuner ? (y/n) : ");
             boolean bienSapper = ChoixEvenementJoueur("Sachan que vous risquer d'être en retard voulez vous bien vous sapper ^_^ ? (y/n) : ");
 
-            /* Le joueur avez prit votre petit déjeuner (donc ...) */
+            /*  Le joueur avez prit votre petit déjeuner (donc ...)  */
             if(dejeuner){
                     if(bienSapper){
-                        /* il se fait compimenter dans le train */
+                        /*  il se fait compimenter dans le train  */
                         System.out.println("Quelle fier allure ! (une fille vous fait clin d'oeuil)");
 
-                        /* Un combat se lance contre la SNCF */
-                        /* fonction fight "return Bool True/False" fight(joueur, train1) */
+                        /*  Un combat se lance contre la SNCF  */
+                        /*  fonction fight "return Bool True/False" fight(joueur, train1)  */
 
-                        /* Le joueur arrive à la coding factory en retard !*/
+                        /*  Le joueur arrive à la coding factory en retard ! */
                         System.out.println("Vous êtes arrivé à la coding factory. Mais ! En retard ...");
 
-                        /* Le Po enguele l'élève en retard */
+                        /*  Le Po enguele l'élève en retard  */
                         System.out.println(String.format("Le PO : Alors, %s vous arrivez en retard ! (le PO s'énèrve, ce qui vous stress ...)", joueur.getNom()));
 
-                        /* Comme le joueur à prit un bon repas, il ne répond pas au PO */
+                        /*  Comme le joueur à prit un bon repas, il ne répond pas au PO  */
                         System.out.println(String.format("%s : Désoler sa ne reproduira plus.", joueur.getNom()));
 
-                        /* Le cour commence, le jouer peux choisire de faire sa Daily ou pas ! */
+                        /*  Le cour commence, le jouer peux choisire de faire sa Daily ou pas !  */
                         Boolean Daily = ChoixEvenementJoueur("Le cour a commencé, voulez vous faire votre Daily ?");
                         if (Daily){
-                            /* Le joueur à fait sa Daily, (donc ...) */
-                            /* Le joueur est plus performent durant la journé */
+                            /*  Le joueur à fait sa Daily, (donc ...)  */
+                            /*  Le joueur est plus performent durant la journé  */
                             System.out.println("Comme vous avez fait votre daily, vous êtes mieux préparer à affronter vos problèmes.");
 
 
-                            /* Un combat se lance contre un Bug de niveau Easy */
+                            /*  Un combat se lance contre un Bug de niveau Easy  */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
-                            /* fonction fight "return Bool True/False" fight(joueur, bug1) */
+                            /*  fonction fight "return Bool True/False" fight(joueur, bug1)  */
 
-                            /* Malheuresuement le joueur rencontre un autre problème */
+                            /*  Malheuresuement le joueur rencontre un autre problème  */
                             System.out.println("Malheuresement un second bug apparait !");
-                            /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
 
-                            /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
+                            /*  le joueur rencontre un combat pour chauffer son repas lors de la pause  */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
                             System.out.println("Malheuresement un étudiant vous empeche de chauffer votre repas");
                             boolean combatRepas = ChoixEvenementJoueur("Voulez vous l'affrontez ??");
 
                             if (combatRepas){
 
-                                /* un combat se lance avec l'étudiant */
+                                /*  un combat se lance avec l'étudiant  */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
-                                /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                /*  fonction fight "return Bool True/false" fight (joueur,élève de l'école)  */
 
-                                /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                /*  résultat du combat avec l'élève  */
+                                if (/*  retour du bool du combat  */){
 
-                                    /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
+                                    /*  Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés  */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
-                                    /* restaurer les pv du joueur */
+                                    /*  restaurer les pv du joueur  */
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }
@@ -206,52 +206,52 @@ public class Main {
                                 }
                                 else {
 
-                                    /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                    /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                     System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }
@@ -263,52 +263,52 @@ public class Main {
 
                             }
                             else {
-                                /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                /* Un nouveau problème est rencontré pendant votre projet */
+                                /*  Un nouveau problème est rencontré pendant votre projet  */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                /* Combat contre un gros bug */
+                                /*  Combat contre un gros bug  */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                /* choix de la pause café */
+                                /*  choix de la pause café  */
                                 System.out.println("Votre journée est bientot terminé !");
                                 System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                 boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                 if (pauseCafé){
 
-                                    /* bois un café et restaure ces pv */
+                                    /*  bois un café et restaure ces pv  */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                    /* affronte le po */
+                                    /*  affronte le po  */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }else {
 
-                                    /* na pas bu de café */
+                                    /*  na pas bu de café  */
                                     System.out.println("Vous n'avez pas bu de café");
 
-                                    /* combat contre un bug */
+                                    /*  combat contre un bug  */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* combat contre le Po */
+                                    /*  combat contre le Po  */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }
@@ -317,78 +317,78 @@ public class Main {
 
                             }
 
-                            /*  */
+                            /*    */
                         }
                         else{
-                            /* Le joueur n'a pas fait sa Daily, (donc ...) */
+                            /*  Le joueur n'a pas fait sa Daily, (donc ...)  */
 
-                            /* Le joueur est moins performent durant la journé */
+                            /*  Le joueur est moins performent durant la journé  */
                             System.out.println("Comme vous n'avez pas fait votre daily, vous êtes mal préparer à affronter vos problèmes.");
 
 
-                            /* Un combat se lance contre un Bug de niveau medium */
+                            /*  Un combat se lance contre un Bug de niveau medium  */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
-                            /* fonction fight "return Bool True/False" fight(joueur, bug2) */
+                            /*  fonction fight "return Bool True/False" fight(joueur, bug2)  */
 
-                            /* Malheuresuement le joueur rencontre un autre problème */
+                            /*  Malheuresuement le joueur rencontre un autre problème  */
                             System.out.println("Malheuresement un second bug apparait !");
-                            /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
 
-                            /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
+                            /*  le joueur rencontre un combat pour chauffer son repas lors de la pause  */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
                             System.out.println("Malheuresement un étudiant vous empeche de chauffer votre repas");
                             boolean combatRepas = ChoixEvenementJoueur("Voulez vous l'affrontez ??");
 
                             if (combatRepas){
 
-                                /* un combat se lance avec l'étudiant */
+                                /*  un combat se lance avec l'étudiant  */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
-                                /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                /*  fonction fight "return Bool True/false" fight (joueur,élève de l'école)  */
 
-                                /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                /*  résultat du combat avec l'élève  */
+                                if (/*  retour du bool du combat  */){
 
-                                    /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
+                                    /*  Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés  */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
-                                    /* restaurer les pv du joueur */
+                                    /*  restaurer les pv du joueur  */
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }
@@ -399,52 +399,52 @@ public class Main {
                                 }
                                 else {
 
-                                    /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                    /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                     System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }
@@ -456,52 +456,52 @@ public class Main {
 
                             }
                             else {
-                                /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                /* Un nouveau problème est rencontré pendant votre projet */
+                                /*  Un nouveau problème est rencontré pendant votre projet  */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                /* Combat contre un gros bug */
+                                /*  Combat contre un gros bug  */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                /* choix de la pause café */
+                                /*  choix de la pause café  */
                                 System.out.println("Votre journée est bientot terminé !");
                                 System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                 boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                 if (pauseCafé){
 
-                                    /* bois un café et restaure ces pv */
+                                    /*  bois un café et restaure ces pv  */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                    /* affronte le po */
+                                    /*  affronte le po  */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }else {
 
-                                    /* na pas bu de café */
+                                    /*  na pas bu de café  */
                                     System.out.println("Vous n'avez pas bu de café");
 
-                                    /* combat contre un bug */
+                                    /*  combat contre un bug  */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* combat contre le Po */
+                                    /*  combat contre le Po  */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }
@@ -511,84 +511,84 @@ public class Main {
                             }
                         }
                     }else{
-                        /* Le joueur à déjeneur mais ne c'est pas bien sapper ! (donc ...) */
+                        /*  Le joueur à déjeneur mais ne c'est pas bien sapper ! (donc ...)  */
                         System.out.println("étant donner que vous n'avez pas perdu de temps, vous n'est pas en retard");
                         System.out.println("et vous n'avez pas rencontrer de problème en chemain");
 
-                        /* Le joueur arrive à la coding factory à l'heure ! */
+                        /*  Le joueur arrive à la coding factory à l'heure !  */
                         System.out.println("Vous arriver à la Coding à l'heure");
 
-                        /* Le cour commence, le jouer peux choisire de faire sa Daily ou pas ! */
+                        /*  Le cour commence, le jouer peux choisire de faire sa Daily ou pas !  */
                         Boolean Daily = ChoixEvenementJoueur("Le cour a commencé, voulez vous faire votre Daily ?");
                         if (Daily){
-                            /* Le joueur à fait sa Daily, (donc ...) */
-                            /* Le joueur est plus performent durant la journé */
+                            /*  Le joueur à fait sa Daily, (donc ...)  */
+                            /*  Le joueur est plus performent durant la journé  */
                             System.out.println("Comme vous avez fait votre daily, vous êtes mieux préparer à affronter vos problèmes.");
 
 
-                            /* Un combat se lance contre un Bug de niveau Easy */
+                            /*  Un combat se lance contre un Bug de niveau Easy  */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
-                            /* fonction fight "return Bool True/False" fight(joueur, bug1) */
+                            /*  fonction fight "return Bool True/False" fight(joueur, bug1)  */
 
-                            /* Malheuresuement le joueur rencontre un autre problème */
+                            /*  Malheuresuement le joueur rencontre un autre problème  */
                             System.out.println("Malheuresement un second bug apparait !");
-                            /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
 
-                            /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
+                            /*  le joueur rencontre un combat pour chauffer son repas lors de la pause  */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
                             System.out.println("Malheuresement un étudiant vous empeche de chauffer votre repas");
                             boolean combatRepas = ChoixEvenementJoueur("Voulez vous l'affrontez ??");
 
                             if (combatRepas){
 
-                                /* un combat se lance avec l'étudiant */
+                                /*  un combat se lance avec l'étudiant  */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
-                                /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                /*  fonction fight "return Bool True/false" fight (joueur,élève de l'école)  */
 
-                                /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                /*  résultat du combat avec l'élève  */
+                                if (/*  retour du bool du combat  */){
 
-                                    /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
+                                    /*  Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés  */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
-                                    /* restaurer les pv du joueur */
+                                    /*  restaurer les pv du joueur  */
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }
@@ -599,52 +599,52 @@ public class Main {
                                 }
                                 else {
 
-                                    /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                    /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                     System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }
@@ -656,52 +656,52 @@ public class Main {
 
                             }
                             else {
-                                /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                /* Un nouveau problème est rencontré pendant votre projet */
+                                /*  Un nouveau problème est rencontré pendant votre projet  */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                /* Combat contre un gros bug */
+                                /*  Combat contre un gros bug  */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                /* choix de la pause café */
+                                /*  choix de la pause café  */
                                 System.out.println("Votre journée est bientot terminé !");
                                 System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                 boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                 if (pauseCafé){
 
-                                    /* bois un café et restaure ces pv */
+                                    /*  bois un café et restaure ces pv  */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                    /* affronte le po */
+                                    /*  affronte le po  */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }else {
 
-                                    /* na pas bu de café */
+                                    /*  na pas bu de café  */
                                     System.out.println("Vous n'avez pas bu de café");
 
-                                    /* combat contre un bug */
+                                    /*  combat contre un bug  */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* combat contre le Po */
+                                    /*  combat contre le Po  */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }
@@ -710,78 +710,78 @@ public class Main {
 
                             }
 
-                            /*  */
+                            /*    */
                         }
                         else{
-                            /* Le joueur n'a pas fait sa Daily, (donc ...) */
+                            /*  Le joueur n'a pas fait sa Daily, (donc ...)  */
 
-                            /* Le joueur est moins performent durant la journé */
+                            /*  Le joueur est moins performent durant la journé  */
                             System.out.println("Comme vous n'avez pas fait votre daily, vous êtes mal préparer à affronter vos problèmes.");
 
 
-                            /* Un combat se lance contre un Bug de niveau medium */
+                            /*  Un combat se lance contre un Bug de niveau medium  */
                             System.out.println("Vous rencontrez un bug lors de votre projet !");
-                            /* fonction fight "return Bool True/False" fight(joueur, bug2) */
+                            /*  fonction fight "return Bool True/False" fight(joueur, bug2)  */
 
-                            /* Malheuresuement le joueur rencontre un autre problème */
+                            /*  Malheuresuement le joueur rencontre un autre problème  */
                             System.out.println("Malheuresement un second bug apparait !");
-                            /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                            /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
 
-                            /* le joueur rencontre un combat pour chauffer son repas lors de la pause */
+                            /*  le joueur rencontre un combat pour chauffer son repas lors de la pause  */
                             System.out.println("Vous l'avez bien mérité vous prenez une pause pour manger");
                             System.out.println("Malheuresement un étudiant vous empeche de chauffer votre repas");
                             boolean combatRepas = ChoixEvenementJoueur("Voulez vous l'affrontez ??");
 
                             if (combatRepas){
 
-                                /* un combat se lance avec l'étudiant */
+                                /*  un combat se lance avec l'étudiant  */
                                 System.out.println("Vous avez décidé d'affronter l'étudiant !");
-                                /* fonction fight "return Bool True/false" fight (joueur,élève de l'école) */
+                                /*  fonction fight "return Bool True/false" fight (joueur,élève de l'école)  */
 
-                                /* résultat du combat avec l'élève */
-                                if (/* retour du bool du combat */){
+                                /*  résultat du combat avec l'élève  */
+                                if (/*  retour du bool du combat  */){
 
-                                    /* Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés */
+                                    /*  Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés  */
                                     System.out.println("Vous avez battu l'étudiant");
                                     System.out.println("Vous arrivez à l'heure et le Po de dis rien vos pv sont restaurés");
-                                    /* restaurer les pv du joueur */
+                                    /*  restaurer les pv du joueur  */
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
 
                                     }
@@ -792,52 +792,52 @@ public class Main {
                                 }
                                 else {
 
-                                    /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                    /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                     System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                    /* Un nouveau problème est rencontré pendant votre projet */
+                                    /*  Un nouveau problème est rencontré pendant votre projet  */
                                     System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* Combat contre un gros bug */
+                                    /*  Combat contre un gros bug  */
                                     System.out.println("Pas de chance un bug majeur est rencontrer");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                    /* choix de la pause café */
+                                    /*  choix de la pause café  */
                                     System.out.println("Votre journée est bientot terminé !");
                                     System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                     boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                     if (pauseCafé){
 
-                                        /* bois un café et restaure ces pv */
+                                        /*  bois un café et restaure ces pv  */
                                         System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                        /* affronte le po */
+                                        /*  affronte le po  */
                                         System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }else {
 
-                                        /* na pas bu de café */
+                                        /*  na pas bu de café  */
                                         System.out.println("Vous n'avez pas bu de café");
 
-                                        /* combat contre un bug */
+                                        /*  combat contre un bug  */
                                         System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                        /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                        /* combat contre le Po */
+                                        /*  combat contre le Po  */
                                         System.out.println("Vous y etes batter le PO pour finir la journée");
-                                        /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                        /* affronte benoit */
+                                        /*  affronte benoit  */
                                         System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                        /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                        /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                     }
@@ -849,52 +849,52 @@ public class Main {
 
                             }
                             else {
-                                /* Vous arrivez en retard et le Po s'énerve contre vous */
+                                /*  Vous arrivez en retard et le Po s'énerve contre vous  */
                                 System.out.println("Vous arrivez en retard et le Po s'énerve contre vous");
 
-                                /* Un nouveau problème est rencontré pendant votre projet */
+                                /*  Un nouveau problème est rencontré pendant votre projet  */
                                 System.out.println("Un nouveau problème est rencontré pendant votre projet");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                /* Combat contre un gros bug */
+                                /*  Combat contre un gros bug  */
                                 System.out.println("Pas de chance un bug majeur est rencontrer");
-                                /* fonction fight "return Bool True/False" fight(joueur,bug3) */
+                                /*  fonction fight "return Bool True/False" fight(joueur,bug3)  */
 
-                                /* choix de la pause café */
+                                /*  choix de la pause café  */
                                 System.out.println("Votre journée est bientot terminé !");
                                 System.out.println("Voulez vous prendre une pause café avant la fin de la journée ?");
                                 boolean pauseCafé = ChoixEvenementJoueur("voulez prendre une pause café ??");
 
                                 if (pauseCafé){
 
-                                    /* bois un café et restaure ces pv */
+                                    /*  bois un café et restaure ces pv  */
                                     System.out.println("Vous avez bu un café vos PV sont restaurés !!");
 
-                                    /* affronte le po */
+                                    /*  affronte le po  */
                                     System.out.println("Votre journée touche à sa fin maintenant vous devez affronter votre PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }else {
 
-                                    /* na pas bu de café */
+                                    /*  na pas bu de café  */
                                     System.out.println("Vous n'avez pas bu de café");
 
-                                    /* combat contre un bug */
+                                    /*  combat contre un bug  */
                                     System.out.println("Vous devez affronter un dernier bug avant de voir le PO");
-                                    /* fonction fight "return Bool True/False" fight(joueur,bug1) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,bug1)  */
 
-                                    /* combat contre le Po */
+                                    /*  combat contre le Po  */
                                     System.out.println("Vous y etes batter le PO pour finir la journée");
-                                    /* fonction fight "return Bool True/False" fight(joueur,PO) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,PO)  */
 
-                                    /* affronte benoit */
+                                    /*  affronte benoit  */
                                     System.out.println("Vous pensiez avoir fini votre journée mais benoit vous lance une attaque administrative");
-                                    /* fonction fight "return Bool True/False" fight(joueur,Benoit) */
+                                    /*  fonction fight "return Bool True/False" fight(joueur,Benoit)  */
 
 
                                 }
@@ -905,15 +905,15 @@ public class Main {
                         }
                     }
             }
-            /* Vous n'avez pas prit votre petit déjeuner (donc ...) */
+            /*  Vous n'avez pas prit votre petit déjeuner (donc ...)  */
             else{
 
-                /* le joueur n'a pris de petit dejeuner il ne peut pas commencer ça journée il meurt */
+                /*  le joueur n'a pris de petit dejeuner il ne peut pas commencer ça journée il meurt  */
                 System.out.println("Vous n'avez pas pris de petit déjeuner vous etes mort !!");
-                /* mettre les pv du joueur a 0 */
+                /*  mettre les pv du joueur a 0  */
             }
 
-            /* Incrémenter un jours */
+            /*  Incrémenter un jours  */
             day++;
         }
 
